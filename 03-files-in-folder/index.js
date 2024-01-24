@@ -9,12 +9,11 @@ fs.readdir(
   (_error, files) => {
     files.forEach((file) => {
       if (!file.isDirectory()) {
-        const fileName = path
-          .basename(file.name)
-          .split('.')
-          .slice(0, -1)
-          .join('.');
         const extName = path.extname(file.name).slice(1);
+        const fileName =
+          extName.length === 0
+            ? path.basename(file.name)
+            : path.basename(file.name).slice(0, -extName.length - 1);
 
         const filePath = path.join(dirPath, file.name);
         fs.stat(filePath, (_error, stats) => {
