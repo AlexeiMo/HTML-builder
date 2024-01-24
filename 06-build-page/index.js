@@ -14,7 +14,7 @@ const assetsDirPath = path.join(__dirname, 'assets');
 const assetsDirCopyPath = path.join(__dirname, 'project-dist', 'assets');
 
 const copyDir = (dirPath, copyDirPath) => {
-  fs.rmdir(copyDirPath, { recursive: true }, () => {
+  fs.rm(copyDirPath, { recursive: true }, () => {
     fs.mkdir(copyDirPath, { recursive: true }, () => {
       fs.readdir(
         dirPath,
@@ -36,7 +36,7 @@ const copyDir = (dirPath, copyDirPath) => {
   });
 };
 
-fs.rmdir(projectPath, { recursive: true }, () => {
+fs.rm(projectPath, { recursive: true }, () => {
   fs.mkdir(projectPath, { recursive: true }, () => {
     fs.readFile(templateFilePath, { encoding: 'utf-8' }, (_err, data) => {
       let templateFileData = data;

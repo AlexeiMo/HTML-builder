@@ -5,7 +5,7 @@ const dirPath = path.join(__dirname, 'files');
 const dirCopyPath = path.join(__dirname, 'files-copy');
 
 const copyDir = (dirPath, copyDirPath) => {
-  fs.rmdir(copyDirPath, { recursive: true }, () => {
+  fs.rm(copyDirPath, { recursive: true }, () => {
     fs.mkdir(copyDirPath, { recursive: true }, () => {
       fs.readdir(
         dirPath,
